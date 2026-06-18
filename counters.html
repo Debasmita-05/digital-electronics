@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counters</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Counters</h1>
+    <p>Sequential circuits that follow a fixed state sequence</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="binary.html">Binary</a>
+    <a href="gates.html">Gates</a>
+    <a href="circuits.html">Circuit Types</a>
+    <a href="combinational.html">Combinational</a>
+    <a href="sequential.html">Sequential</a>
+    <a href="counters.html">Counters</a>
+  </nav>
+
+  <section>
+    <h2>Counter Theory</h2>
+    <p>A counter is a sequential circuit that goes through a prescribed sequence of binary states when triggered by a clock signal. Counters are used in timers, frequency dividers, address generators, and digital clocks.</p>
+
+    <div class="counter-grid">
+      <div class="card">
+        <h3>Binary Ripple Counter</h3>
+        <p>An asynchronous counter where each flip-flop is clocked by the output of the previous one.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Clock Pulse</th><th>Q2</th><th>Q1</th><th>Q0</th><th>Decimal</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>2</td></tr>
+              <tr><td>3</td><td>0</td><td>1</td><td>1</td><td>3</td></tr>
+              <tr><td>4</td><td>1</td><td>0</td><td>0</td><td>4</td></tr>
+              <tr><td>5</td><td>1</td><td>0</td><td>1</td><td>5</td></tr>
+              <tr><td>6</td><td>1</td><td>1</td><td>0</td><td>6</td></tr>
+              <tr><td>7</td><td>1</td><td>1</td><td>1</td><td>7</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Ring Counter</h3>
+        <p>A shift register where the output of the last flip-flop is fed back to the first.</p>
+        <p>Only one flip-flop is HIGH at a time.</p>
+      </div>
+
+      <div class="card">
+        <h3>Johnson Counter</h3>
+        <p>Also called a twisted ring counter. The complemented output of the last flip-flop is fed back to the first.</p>
+        <p>It gives 2N states for N flip-flops.</p>
+      </div>
+
+      <div class="card">
+        <h3>BCD Counter MOD-10</h3>
+        <p>Counts from 0 to 9 and then resets.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Count</th><th>Q3</th><th>Q2</th><th>Q1</th><th>Q0</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>3</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+              <tr><td>4</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>5</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>6</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+              <tr><td>7</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>9</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Up/Down Counter</h3>
+        <p>Counts up or down based on mode input M.</p>
+        <div class="info-box">
+          UP: Q0(next) = Q0̄<br />
+          Q1(next) = Q1 XOR Q0<br /><br />
+          DOWN: Q0(next) = Q0̄<br />
+          Q1(next) = Q1 XOR Q0̄
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>MOD-N Counter</h3>
+        <p>Counts from 0 to N-1 and then resets.</p>
+        <p>Number of flip-flops needed: ⌈log₂(N)⌉</p>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top: 18px;">
+      <table>
+        <caption>Counter Comparison</caption>
+        <thead>
+          <tr><th>Counter</th><th>Type</th><th>States</th><th>Direction</th><th>Application</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Binary Ripple</td><td>Async</td><td>2ⁿ</td><td>Up</td><td>Frequency division</td></tr>
+          <tr><td>Synchronous Binary</td><td>Sync</td><td>2ⁿ</td><td>Up</td><td>CPUs, timers</td></tr>
+          <tr><td>Ring</td><td>Sync</td><td>N</td><td>Circular</td><td>Sequencing, state machines</td></tr>
+          <tr><td>Johnson</td><td>Sync</td><td>2N</td><td>Circular</td><td>Frequency divider, decoding</td></tr>
+          <tr><td>BCD / MOD-10</td><td>Sync</td><td>10</td><td>Up</td><td>Digital clocks, displays</td></tr>
+          <tr><td>Up/Down</td><td>Sync</td><td>2ⁿ</td><td>Both</td><td>Timers, motor control</td></tr>
+          <tr><td>MOD-N</td><td>Sync</td><td>N</td><td>Up</td><td>Custom sequences</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Counters</p>
+  </footer>
+</body>
+</html>

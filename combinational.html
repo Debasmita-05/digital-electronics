@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combinational Circuits</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Combinational Circuits</h1>
+    <p>Output depends only on current inputs</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="binary.html">Binary</a>
+    <a href="gates.html">Gates</a>
+    <a href="circuits.html">Circuit Types</a>
+    <a href="combinational.html">Combinational</a>
+    <a href="sequential.html">Sequential</a>
+    <a href="counters.html">Counters</a>
+  </nav>
+
+  <section>
+    <h2>Combinational Theory</h2>
+    <p>In a combinational circuit, the output at any time is a pure function of the inputs at that time. There is no clock and no feedback. These are the building blocks for arithmetic and data routing.</p>
+
+    <div class="circuit-grid">
+      <div class="card">
+        <h3>Half Adder</h3>
+        <svg class="diagram" viewBox="0 0 520 180">
+          <rect x="50" y="45" width="120" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" />
+          <text x="76" y="86" font-size="24" fill="#065f46">Half</text>
+          <text x="70" y="112" font-size="24" fill="#065f46">Adder</text>
+          <line x1="10" y1="70" x2="50" y2="70" stroke="#065f46" stroke-width="4"/>
+          <line x1="10" y1="110" x2="50" y2="110" stroke="#065f46" stroke-width="4"/>
+          <line x1="170" y1="70" x2="220" y2="70" stroke="#065f46" stroke-width="4"/>
+          <line x1="170" y1="110" x2="220" y2="110" stroke="#065f46" stroke-width="4"/>
+          <text x="245" y="75" font-size="18" fill="#065f46">Sum = A XOR B</text>
+          <text x="245" y="112" font-size="18" fill="#065f46">Carry = A AND B</text>
+        </svg>
+        <p>Adds two 1-bit numbers. Produces a Sum and Carry.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Sum</th><th>Carry</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Full Adder</h3>
+        <svg class="diagram" viewBox="0 0 540 200">
+          <rect x="50" y="55" width="150" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" />
+          <text x="78" y="98" font-size="22" fill="#065f46">Full Adder</text>
+          <line x1="10" y1="70" x2="50" y2="70" stroke="#065f46" stroke-width="4"/>
+          <line x1="10" y1="105" x2="50" y2="105" stroke="#065f46" stroke-width="4"/>
+          <line x1="10" y1="140" x2="50" y2="140" stroke="#065f46" stroke-width="4"/>
+          <line x1="200" y1="80" x2="250" y2="80" stroke="#065f46" stroke-width="4"/>
+          <line x1="200" y1="125" x2="250" y2="125" stroke="#065f46" stroke-width="4"/>
+          <text x="275" y="84" font-size="18" fill="#065f46">Sum = A XOR B XOR Cin</text>
+          <text x="275" y="128" font-size="18" fill="#065f46">Cout = AB + Cin(A XOR B)</text>
+        </svg>
+        <p>Adds three bits: A, B, and carry-in Cin.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Cin</th><th>Sum</th><th>Cout</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Multiplexer</h3>
+        <p>A data selector that forwards one of many inputs to a single output based on select lines.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>S1</th><th>S0</th><th>Output Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>I0</td></tr>
+              <tr><td>0</td><td>1</td><td>I1</td></tr>
+              <tr><td>1</td><td>0</td><td>I2</td></tr>
+              <tr><td>1</td><td>1</td><td>I3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Decoder</h3>
+        <p>Converts binary code into a unique output line.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>D0</th><th>D1</th><th>D2</th><th>D3</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Encoder</h3>
+        <p>Converts one active input line into binary output code.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>D3</th><th>D2</th><th>D1</th><th>D0</th><th>Y1</th><th>Y0</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Comparator</h3>
+        <p>Compares two binary numbers and gives A&gt;B, A=B, and A&lt;B outputs.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>A&gt;B</th><th>A=B</th><th>A&lt;B</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Combinational Circuits</p>
+  </footer>
+</body>
+</html>

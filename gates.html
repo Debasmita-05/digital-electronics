@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logic Gates</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Basic Logic Gates</h1>
+    <p>Core building blocks of digital circuits</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="binary.html">Binary</a>
+    <a href="gates.html">Gates</a>
+    <a href="circuits.html">Circuit Types</a>
+    <a href="combinational.html">Combinational</a>
+    <a href="sequential.html">Sequential</a>
+    <a href="counters.html">Counters</a>
+  </nav>
+
+  <section>
+    <h2>Logic Gate Theory</h2>
+    <p>A logic gate is a basic building block of digital circuits. It takes one or two binary inputs and produces a single binary output based on a fixed logical rule described by a Boolean expression.</p>
+
+    <div class="gate-grid">
+      <div class="card">
+        <h3>AND Gate</h3>
+        <svg class="diagram" viewBox="0 0 420 170">
+          <rect x="40" y="35" width="120" height="100" rx="10" fill="#eff6ff" stroke="#1e3a8a" />
+          <line x1="40" y1="65" x2="10" y2="65" stroke="#1e3a8a" stroke-width="4"/>
+          <line x1="40" y1="105" x2="10" y2="105" stroke="#1e3a8a" stroke-width="4"/>
+          <line x1="160" y1="85" x2="210" y2="85" stroke="#1e3a8a" stroke-width="4"/>
+          <text x="82" y="92" font-size="28" fill="#1e3a8a">AND</text>
+        </svg>
+        <p>Output is 1 only when both inputs are 1.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>OR Gate</h3>
+        <svg class="diagram" viewBox="0 0 420 170">
+          <rect x="40" y="35" width="120" height="100" rx="10" fill="#eff6ff" stroke="#1e3a8a" />
+          <line x1="40" y1="65" x2="10" y2="65" stroke="#1e3a8a" stroke-width="4"/>
+          <line x1="40" y1="105" x2="10" y2="105" stroke="#1e3a8a" stroke-width="4"/>
+          <line x1="160" y1="85" x2="210" y2="85" stroke="#1e3a8a" stroke-width="4"/>
+          <text x="90" y="92" font-size="28" fill="#1e3a8a">OR</text>
+        </svg>
+        <p>Output is 1 when at least one input is 1.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>NOT Gate</h3>
+        <svg class="diagram" viewBox="0 0 420 170">
+          <polygon points="50,35 150,85 50,135" fill="#eff6ff" stroke="#1e3a8a" stroke-width="3"/>
+          <circle cx="160" cy="85" r="8" fill="white" stroke="#1e3a8a" stroke-width="3"/>
+          <line x1="10" y1="85" x2="50" y2="85" stroke="#1e3a8a" stroke-width="4"/>
+          <line x1="168" y1="85" x2="220" y2="85" stroke="#1e3a8a" stroke-width="4"/>
+          <text x="75" y="92" font-size="28" fill="#1e3a8a">NOT</text>
+        </svg>
+        <p>Output is the complement of the input.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>NAND Gate</h3>
+        <p>Inverse of AND. Universal gate.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>0</td><td>1</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>NOR Gate</h3>
+        <p>Inverse of OR. Universal gate.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>XOR Gate</h3>
+        <p>Output is 1 when inputs are different.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>1</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>XNOR Gate</h3>
+        <p>Output is 1 when inputs are equal.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Y</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Logic Gates</p>
+  </footer>
+</body>
+</html>

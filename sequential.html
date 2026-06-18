@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sequential Circuits</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Sequential Circuits</h1>
+    <p>Output depends on current inputs and previous states</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="binary.html">Binary</a>
+    <a href="gates.html">Gates</a>
+    <a href="circuits.html">Circuit Types</a>
+    <a href="combinational.html">Combinational</a>
+    <a href="sequential.html">Sequential</a>
+    <a href="counters.html">Counters</a>
+  </nav>
+
+  <section>
+    <h2>Sequential Theory</h2>
+    <p>Sequential circuits have memory — their output depends not just on current inputs but also on the previous state. A clock signal synchronises when state changes occur.</p>
+
+    <div class="card">
+      <h3>Clock and Memory</h3>
+      <svg class="diagram" viewBox="0 0 540 180">
+        <path d="M20 110 L80 110 L80 60 L140 60 L140 110 L200 110 L200 60 L260 60 L260 110 L320 110 L320 60 L380 60 L380 110 L440 110" fill="none" stroke="#b45309" stroke-width="4"/>
+        <text x="25" y="150" font-size="18" fill="#b45309">Clock signal</text>
+        <text x="360" y="35" font-size="18" fill="#b45309">0 → 1 or 1 → 0</text>
+      </svg>
+      <p>Sequential circuits respond on rising or falling edges of the clock.</p>
+    </div>
+
+    <div class="ff-grid">
+      <div class="card">
+        <h3>SR Flip-Flop</h3>
+        <p>Set-Reset flip-flop. S sets Q to 1; R resets Q to 0.</p>
+        <p><strong>Invalid state:</strong> S = 1, R = 1</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>S</th><th>R</th><th>Q(next)</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>Q</td><td>Hold</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+              <tr><td>1</td><td>1</td><td>?</td><td>Invalid</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>D Flip-Flop</h3>
+        <p>The output Q follows input D on the next clock edge.</p>
+        <p class="eq">Q(next) = D</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>D</th><th>Q(next)</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>Reset</td></tr>
+              <tr><td>1</td><td>1</td><td>Set</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>T Flip-Flop</h3>
+        <p>When T=1, the output toggles on every clock edge.</p>
+        <p class="eq">Q(next) = T XOR Q</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>T</th><th>Q</th><th>Q(next)</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>0</td><td>Hold</td></tr>
+              <tr><td>0</td><td>1</td><td>1</td><td>Hold</td></tr>
+              <tr><td>1</td><td>0</td><td>1</td><td>Toggle</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>Toggle</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>JK Flip-Flop</h3>
+        <p>Improves SR flip-flop by removing the invalid state. J=1 and K=1 causes toggle.</p>
+        <p class="eq">Q(next) = JQ̄ + K̄Q</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>J</th><th>K</th><th>Q(present)</th><th>Q(next)</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0</td><td>Q</td><td>Q</td><td>Hold</td></tr>
+              <tr><td>0</td><td>1</td><td>Q</td><td>0</td><td>Reset</td></tr>
+              <tr><td>1</td><td>0</td><td>Q</td><td>1</td><td>Set</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>1</td><td>Toggle</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>Toggle</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Master-Slave JK</h3>
+        <p>Uses two JK flip-flops in series to avoid race around condition.</p>
+        <ul>
+          <li>Clock HIGH: Master captures input, Slave stays disabled.</li>
+          <li>Clock LOW: Master locks, Slave copies master output.</li>
+        </ul>
+        <p>This ensures only one output change per clock cycle.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top: 18px;">
+      <table>
+        <caption>Flip-Flop Comparison</caption>
+        <thead>
+          <tr><th>Type</th><th>Inputs</th><th>Invalid State?</th><th>Toggle?</th><th>Main Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SR</td><td>S, R</td><td>Yes</td><td>No</td><td>Basic memory, latches</td></tr>
+          <tr><td>JK</td><td>J, K</td><td>No</td><td>Yes</td><td>Counters, universal FF</td></tr>
+          <tr><td>D</td><td>D</td><td>No</td><td>No</td><td>Registers, data storage</td></tr>
+          <tr><td>T</td><td>T</td><td>No</td><td>Yes</td><td>Counters, frequency dividers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Sequential Circuits</p>
+  </footer>
+</body>
+</html>
