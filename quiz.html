@@ -13,9 +13,6 @@
       margin-bottom: 16px;
       background: #f8faff;
     }
-    .quiz-card h3 {
-      margin-top: 0;
-    }
     .option {
       display: block;
       padding: 8px 10px;
@@ -24,6 +21,19 @@
       border-radius: 8px;
       background: #fff;
       cursor: pointer;
+    }
+    .correct {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+    }
+    .wrong {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+    }
+    .answer {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #1d4ed8;
     }
     .quiz-actions {
       margin-top: 18px;
@@ -80,6 +90,7 @@
         <label class="option"><input type="radio" name="q1" value="B"> AND</label>
         <label class="option"><input type="radio" name="q1" value="C"> XOR</label>
         <label class="option"><input type="radio" name="q1" value="D"> NOT</label>
+        <div class="answer" id="a1"></div>
       </div>
 
       <div class="quiz-card">
@@ -88,6 +99,7 @@
         <label class="option"><input type="radio" name="q2" value="B"> 0110</label>
         <label class="option"><input type="radio" name="q2" value="C"> 0011</label>
         <label class="option"><input type="radio" name="q2" value="D"> 1111</label>
+        <div class="answer" id="a2"></div>
       </div>
 
       <div class="quiz-card">
@@ -96,6 +108,7 @@
         <label class="option"><input type="radio" name="q3" value="B"> T flip-flop</label>
         <label class="option"><input type="radio" name="q3" value="C"> JK flip-flop</label>
         <label class="option"><input type="radio" name="q3" value="D"> RS latch</label>
+        <div class="answer" id="a3"></div>
       </div>
 
       <div class="quiz-card">
@@ -104,6 +117,7 @@
         <label class="option"><input type="radio" name="q4" value="B"> 8</label>
         <label class="option"><input type="radio" name="q4" value="C"> 16</label>
         <label class="option"><input type="radio" name="q4" value="D"> 32</label>
+        <div class="answer" id="a4"></div>
       </div>
 
       <div class="quiz-card">
@@ -112,47 +126,73 @@
         <label class="option"><input type="radio" name="q5" value="B"> 1</label>
         <label class="option"><input type="radio" name="q5" value="C"> 2</label>
         <label class="option"><input type="radio" name="q5" value="D"> Undefined</label>
+        <div class="answer" id="a5"></div>
       </div>
 
       <div class="quiz-actions">
         <button type="button" onclick="checkAnswers()">Submit</button>
-        <button type="reset">Reset</button>
+        <button type="reset" onclick="clearFeedback()">Reset</button>
       </div>
 
       <div id="result" class="result" style="display:none;"></div>
     </form>
   </section>
 
-  <section>
-    <h2>Short Exercises</h2>
-    <ol>
-      <li>Convert decimal 9 into binary.</li>
-      <li>Write the output of an AND gate when A=1 and B=0.</li>
-      <li>State the characteristic equation of a D flip-flop.</li>
-      <li>How many states does a 3-bit binary counter have?</li>
-      <li>What is the use of a decoder?</li>
-    </ol>
-  </section>
-
   <script>
-    function checkAnswers() {
-      const answers = {
-        q1: "B",
-        q2: "A",
-        q3: "C",
-        q4: "C",
-        q5: "A"
-      };
+    const answers = {
+      q1: { value: "B", text: "AND" },
+      q2: { value: "A", text: "0101" },
+      q3: { value: "C", text: "JK flip-flop" },
+      q4: { value: "C", text: "16" },
+      q5: { value: "A", text: "0" }
+    };
 
+    function clearFeedback() {
+      document.querySelectorAll(".option").forEach(el => {
+        el.classList.remove("correct", "wrong");
+      });
+      document.querySelectorAll(".answer").forEach(el => {
+        el.textContent = "";
+      });
+      const result = document.getElementById("result");
+      result.style.display = "none";
+      result.textContent = "";
+    }
+
+    function checkAnswers() {
       let score = 0;
-      for (const q in answers) {
+      let total = Object.keys(answers).length;
+
+      Object.keys(answers).forEach((q, index) => {
         const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) score++;
-      }
+        const options = document.querySelectorAll(`input[name="${q}"]`);
+        const answerBox = document.getElementById(`a${index + 1}`);
+        const correct = answers[q];
+
+        options.forEach(opt => {
+          opt.parentElement.classList.remove("correct", "wrong");
+          if (opt.value === correct.value) {
+            opt.parentElement.classList.add("correct");
+          }
+        });
+
+        if (selected) {
+          if (selected.value === correct.value) {
+            selected.parentElement.classList.add("correct");
+            answerBox.textContent = `Correct answer: ${correct.text}`;
+            score++;
+          } else {
+            selected.parentElement.classList.add("wrong");
+            answerBox.textContent = `Correct answer: ${correct.text}`;
+          }
+        } else {
+          answerBox.textContent = `Correct answer: ${correct.text}`;
+        }
+      });
 
       const result = document.getElementById("result");
       result.style.display = "block";
-      result.textContent = `You scored ${score} out of 5.`;
+      result.textContent = `You scored ${score} out of ${total}.`;
     }
   </script>
 
