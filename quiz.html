@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Electronics Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .quiz-card {
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 16px;
+      background: #f8faff;
+    }
+    .quiz-card h3 {
+      margin-top: 0;
+    }
+    .option {
+      display: block;
+      padding: 8px 10px;
+      margin: 8px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .quiz-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .result {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Exercises and Quizzes</h1>
+    <p>Practice questions for digital electronics</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="binary.html">Binary</a>
+    <a href="gates.html">Gates</a>
+    <a href="circuits.html">Circuit Types</a>
+    <a href="combinational.html">Combinational</a>
+    <a href="sequential.html">Sequential</a>
+    <a href="counters.html">Counters</a>
+    <a href="quiz.html">Quiz</a>
+  </nav>
+
+  <section>
+    <h2>Multiple Choice Questions</h2>
+
+    <form id="quizForm">
+      <div class="quiz-card">
+        <h3>1. Which gate gives output 1 only when both inputs are 1?</h3>
+        <label class="option"><input type="radio" name="q1" value="A"> OR</label>
+        <label class="option"><input type="radio" name="q1" value="B"> AND</label>
+        <label class="option"><input type="radio" name="q1" value="C"> XOR</label>
+        <label class="option"><input type="radio" name="q1" value="D"> NOT</label>
+      </div>
+
+      <div class="quiz-card">
+        <h3>2. What is the binary of decimal 5?</h3>
+        <label class="option"><input type="radio" name="q2" value="A"> 0101</label>
+        <label class="option"><input type="radio" name="q2" value="B"> 0110</label>
+        <label class="option"><input type="radio" name="q2" value="C"> 0011</label>
+        <label class="option"><input type="radio" name="q2" value="D"> 1111</label>
+      </div>
+
+      <div class="quiz-card">
+        <h3>3. Which flip-flop removes the invalid state of SR?</h3>
+        <label class="option"><input type="radio" name="q3" value="A"> D flip-flop</label>
+        <label class="option"><input type="radio" name="q3" value="B"> T flip-flop</label>
+        <label class="option"><input type="radio" name="q3" value="C"> JK flip-flop</label>
+        <label class="option"><input type="radio" name="q3" value="D"> RS latch</label>
+      </div>
+
+      <div class="quiz-card">
+        <h3>4. A 4-bit binary counter has how many states?</h3>
+        <label class="option"><input type="radio" name="q4" value="A"> 4</label>
+        <label class="option"><input type="radio" name="q4" value="B"> 8</label>
+        <label class="option"><input type="radio" name="q4" value="C"> 16</label>
+        <label class="option"><input type="radio" name="q4" value="D"> 32</label>
+      </div>
+
+      <div class="quiz-card">
+        <h3>5. What is the output of XOR when inputs are the same?</h3>
+        <label class="option"><input type="radio" name="q5" value="A"> 0</label>
+        <label class="option"><input type="radio" name="q5" value="B"> 1</label>
+        <label class="option"><input type="radio" name="q5" value="C"> 2</label>
+        <label class="option"><input type="radio" name="q5" value="D"> Undefined</label>
+      </div>
+
+      <div class="quiz-actions">
+        <button type="button" onclick="checkAnswers()">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+
+      <div id="result" class="result" style="display:none;"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Short Exercises</h2>
+    <ol>
+      <li>Convert decimal 9 into binary.</li>
+      <li>Write the output of an AND gate when A=1 and B=0.</li>
+      <li>State the characteristic equation of a D flip-flop.</li>
+      <li>How many states does a 3-bit binary counter have?</li>
+      <li>What is the use of a decoder?</li>
+    </ol>
+  </section>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: "B",
+        q2: "A",
+        q3: "C",
+        q4: "C",
+        q5: "A"
+      };
+
+      let score = 0;
+      for (const q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) score++;
+      }
+
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      result.textContent = `You scored ${score} out of 5.`;
+    }
+  </script>
+
+  <footer class="footer">
+    <p>Quiz and Exercise Page</p>
+  </footer>
+</body>
+</html>
