@@ -20,12 +20,51 @@
     <a href="combinational.html">Combinational</a>
     <a href="sequential.html">Sequential</a>
     <a href="counters.html">Counters</a>
-    <a href="quiz.html">Quiz</a>
   </nav>
 
   <section>
     <h2>Binary Basics</h2>
     <p>The binary system uses only two digits: <strong>0</strong> and <strong>1</strong>. Each digit is called a <em>bit</em>. A group of 4 bits is called a <em>nibble</em>; 8 bits make a <em>byte</em>.</p>
+<h3>Bits, Nibbles and Bytes</h3>
+<p>A <strong>bit</strong> is the smallest unit of data in digital systems. It can have only two values: 0 or 1.</p>
+
+<p>A <strong>nibble</strong> is a group of 4 bits. A nibble can represent 16 different values, from 0000 to 1111.</p>
+
+<p>A <strong>byte</strong> is a group of 8 bits. One byte can represent 256 different combinations.</p>
+
+<div class="info-box">
+  <strong>Bit:</strong> 1 binary digit<br>
+  <strong>Nibble:</strong> 4 bits<br>
+  <strong>Byte:</strong> 8 bits
+</div>
+
+<h4>Applications of Bits</h4>
+<ul>
+  <li><strong>Boolean values:</strong> true/false, yes/no, on/off.</li>
+  <li><strong>Logic circuits:</strong> flip-flops store 1 bit each.</li>
+  <li><strong>Control signals:</strong> one bit can turn a device on or off.</li>
+</ul>
+
+<h4>Applications of Nibbles</h4>
+<ul>
+  <li><strong>Hexadecimal conversion:</strong> 4 binary bits equal 1 hex digit.</li>
+  <li><strong>Compact representation:</strong> useful for reading and writing binary data easily.</li>
+  <li><strong>Digital displays:</strong> often used in small groups for number coding.</li>
+</ul>
+
+<h4>Applications of Bytes</h4>
+<ul>
+  <li><strong>Character storage:</strong> one letter or symbol is usually stored in 1 byte.</li>
+  <li><strong>Memory and storage:</strong> file sizes, RAM, and disk space are measured in bytes and their multiples.</li>
+  <li><strong>Data transfer:</strong> network speed and communication data are often based on bytes or bits.</li>
+</ul>
+
+<h4>Examples</h4>
+<p>
+  1 bit = 2 values<br>
+  4 bits = 1 nibble = 16 values<br>
+  8 bits = 1 byte = 256 values
+</p>
 
     <h3>Decimal to Binary Conversion</h3>
     <div class="info-box">
@@ -38,6 +77,67 @@
       1 ÷ 2 = 0 remainder 1<br />
       Read upward → 13 in binary = <strong>1101</strong>
     </div>
+<h3>Binary to Decimal Conversion</h3>
+<p>To convert binary into decimal, multiply each bit by its place value and add the results. The place values from right to left are 1, 2, 4, 8, 16, and so on.</p>
+
+<div class="info-box">
+  <strong>Rule:</strong> Decimal = (bit × place value) added from right to left
+</div>
+
+<h4>Example 1: 1010</h4>
+<p>
+  1010 = (1 × 8) + (0 × 4) + (1 × 2) + (0 × 1)<br>
+  = 8 + 0 + 2 + 0<br>
+  = <strong>10</strong>
+</p>
+
+<h4>Example 2: 1101</h4>
+<p>
+  1101 = (1 × 8) + (1 × 4) + (0 × 2) + (1 × 1)<br>
+  = 8 + 4 + 0 + 1<br>
+  = <strong>13</strong>
+</p>
+
+<h4>Example 3: 10011</h4>
+<p>
+  10011 = (1 × 16) + (0 × 8) + (0 × 4) + (1 × 2) + (1 × 1)<br>
+  = 16 + 0 + 0 + 2 + 1<br>
+  = <strong>19</strong>
+</p>
+<h3>Hexadecimal Number System</h3>
+<p>The hexadecimal system uses 16 symbols: 0 to 9 and A to F. Here, A = 10, B = 11, C = 12, D = 13, E = 14, and F = 15. It is widely used in computers because one hex digit represents exactly 4 binary bits.</p>
+
+<div class="info-box">
+  <strong>Why hex is useful:</strong> It makes long binary numbers shorter and easier to read.
+</div>
+
+<h4>Binary to Hexadecimal</h4>
+<p>To convert binary to hex, group the binary digits into sets of 4 from right to left, then convert each group to one hex digit.</p>
+
+<h4>Example 1: 1010</h4>
+<p>
+  1010 = A
+</p>
+
+<h4>Example 2: 11010110</h4>
+<p>
+  1101 0110 = D6
+</p>
+
+<h4>Example 3: 111100001010</h4>
+<p>
+  1111 0000 1010 = F0A
+</p>
+
+<h4>Hexadecimal to Decimal</h4>
+<p>Each hex digit has a place value based on powers of 16.</p>
+
+<h4>Example 4: 2F</h4>
+<p>
+  2F = (2 × 16) + (15 × 1)<br>
+  = 32 + 15<br>
+  = <strong>47</strong>
+</p>
 
     <div class="table-wrap">
       <table>
